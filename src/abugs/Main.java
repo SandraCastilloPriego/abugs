@@ -17,6 +17,9 @@
 
 package abugs;
 
+import abugs.Graphics.GraphicsWorld;
+import abugs.world.World;
+
 /**
  *
  * @author bicha
@@ -27,7 +30,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        World world = new World(100, 100);
+        GraphicsWorld gworld = new GraphicsWorld(world);
+        gworld.setVisible(true);
     }
 
 }

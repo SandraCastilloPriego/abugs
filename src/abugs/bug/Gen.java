@@ -27,6 +27,7 @@ public class Gen {
 
     public Gen(String name){
         this.name = name;
+        this.value = Math.random();  
     }
 
     public Gen(String name, double min, double max){

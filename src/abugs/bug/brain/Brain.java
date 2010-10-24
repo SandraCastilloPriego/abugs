@@ -14,7 +14,10 @@
  * XXXXXX; if not, write to the Free Software Foundation, Inc., 51 Franklin St,
  * Fifth Floor, Boston, MA 02110-1301 USA
  */
-package abugs.bug;
+package abugs.bug.brain;
+
+import abugs.bug.Chromosome;
+
 /**
  *
  * @author bicha

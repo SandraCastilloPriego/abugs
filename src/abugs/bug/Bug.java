@@ -16,6 +16,8 @@
  */
 package abugs.bug;
 
+import abugs.bug.brain.Brain;
+
 /**
  *
  * @author bicha
@@ -35,5 +37,13 @@ public class Bug {
     public double getSize() {
         double basicSize = this.chromosome.getGenValue(BodyGenes.SIZE.name()).getValue();
         return basicSize + growingSize;
+    }
+
+    public double getVision() {
+        return this.chromosome.getGenValue(BodyGenes.VISION.name()).getValue();
+    }
+
+    public double getVelocity() {
+        return this.chromosome.getGenValue(BodyGenes.VELOCITY.name()).getValue();
     }
 }

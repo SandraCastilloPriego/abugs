@@ -53,4 +53,31 @@ public class Cell {
         }
         return space;
     }
+    
+    public void removeBug(Bug bug){
+        this.bugsInside.remove(bug);
+    }
+
+
+    public void update(){
+        toEat();
+        toReproduce();
+        toDie();
+    }
+
+    private void toEat() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void toReproduce() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void toDie() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public List<Bug> getBugs(){
+        return this.bugsInside;
+    }
 }

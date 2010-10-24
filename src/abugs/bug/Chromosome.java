@@ -17,6 +17,7 @@
 
 package abugs.bug;
 
+import abugs.bug.brain.BrainGenes;
 import java.util.Hashtable;
 
 /**
