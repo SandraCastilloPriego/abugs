@@ -22,5 +22,5 @@ package abugs.bug;
  * @author bicha
  */
 public enum BodyGenes {
-    VISION, STRENGTH, VELOCITY, SIZE
+    VISION, STRENGTH, VELOCITY, SIZE, TIMEOFLIFE
 }

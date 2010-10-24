@@ -15,7 +15,7 @@
  * Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-package abugs.bug;
+package abugs.bug.brain;
 
 /**
  *
