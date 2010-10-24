@@ -17,12 +17,35 @@
 
 package abugs.bug;
 
+import java.util.Hashtable;
+
 /**
  *
  * @author bicha
  */
 public class Chromosome {
 
+    Hashtable<String, Gen> genes;
 
+    public Chromosome(){
+        genes  = new Hashtable<String, Gen>();
+        CreateGenes();
+    }
+
+    public void CreateGenes(){
+        //Brain genes
+        for(BrainGenes names : BrainGenes.values()){
+            Gen gen = new Gen(names.name());
+            genes.put(names.name(), gen);
+        }
+        for(BodyGenes names : BodyGenes.values()){
+            Gen gen = new Gen(names.name());
+            genes.put(names.name(), gen);
+        }
+    }
+
+    public Gen getGenValue(String geneName){
+        return genes.get(geneName);
+    }
 
 }
