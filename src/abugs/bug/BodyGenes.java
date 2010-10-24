@@ -21,26 +21,6 @@ package abugs.bug;
  *
  * @author bicha
  */
-public class Gen {
-    String name;
-    double value;
-
-    public Gen(String name){
-        this.name = name;
-    }
-
-    public Gen(String name, double min, double max){
-        this.name = name;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public double getValue(){
-        return value;
-    }
-
-    public void Mutate(){}
-
+public enum BodyGenes {
+    VISION, STRENGTH, VELOCITY, SIZE
 }

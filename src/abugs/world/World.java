@@ -17,10 +17,17 @@
 
 package abugs.world;
 
+
+
 /**
  *
  * @author bicha
  */
 public class World {
+
+    Cell[] cells;
+    public World(int numberOfCells){
+        cells = new Cell[numberOfCells];
+    }
 
 }

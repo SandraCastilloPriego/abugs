@@ -14,7 +14,6 @@
  * XXXXXX; if not, write to the Free Software Foundation, Inc., 51 Franklin St,
  * Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 package abugs.bug;
 
 /**
@@ -23,4 +22,18 @@ package abugs.bug;
  */
 public class Bug {
 
+    Chromosome chromosome;
+    Brain brain;
+    //the bug can grow when it eats
+    double growingSize = 0;
+
+    public Bug() {
+        this.chromosome = new Chromosome();
+        brain = new Brain(chromosome);
+    }
+
+    public double getSize() {
+        double basicSize = this.chromosome.getGenValue(BodyGenes.SIZE.name()).getValue();
+        return basicSize + growingSize;
+    }
 }
