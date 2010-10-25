@@ -29,10 +29,21 @@ public class Bug {
     Brain brain;
     //the bug can grow when it eats
     double growingSize = 0;
+    int x, y;
 
-    public Bug() {
+    public Bug(int x, int y) {
         this.chromosome = new Chromosome();
         brain = new Brain(chromosome);
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getx() {
+        return x;
+    }
+
+    public int gety(){
+        return y;
     }
 
     public double getSize() {
@@ -48,7 +59,7 @@ public class Bug {
         return this.chromosome.getGenValue(BodyGenes.VELOCITY.name()).getValue();
     }
 
-    public void getMovementDecision(List<Bug> bugsSeen) {
-
+    public boolean getMovementDecision(List<Bug> bugsSeen) {
+        return true;
     }
 }

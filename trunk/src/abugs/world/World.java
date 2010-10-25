@@ -17,6 +17,7 @@
 package abugs.world;
 
 import abugs.bug.Bug;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -27,6 +28,7 @@ import java.util.Random;
 public class World {
 
     Cell[][] cells;
+    List<Bug> population;
     Random rand;
     int numberOfBugs;
     int numberOfCells;
@@ -36,30 +38,42 @@ public class World {
         this.cellsPerSide = cellsPerSide;
         this.numberOfBugs = numberOfBugs;
         this.numberOfCells = cellsPerSide * cellsPerSide;
+        this.population = new ArrayList<Bug>();
 
         this.rand = new Random();
         cells = new Cell[cellsPerSide][cellsPerSide];
         for (int i = 0; i < cellsPerSide; i++) {
             cells[i] = new Cell[cellsPerSide];
-             for (int j = 0; j< cells[i].length; j++) {
-                 cells[i][j] = new Cell();
-             }
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j] = new Cell();
+            }
         }
         for (int i = 0; i < numberOfBugs; i++) {
-            Bug bug = new Bug();
-            this.addBug(bug);
+            this.addBug();
         }
     }
 
-    public void addBug(Bug bug) {
-        boolean isInside = false;
+    public List<Bug> getPopulation() {
+        return this.population;
+    }
+
+    public int getWorldSize() {
+        return this.cellsPerSide;
+    }
+
+    public void addBug() {
+        boolean isInside = true;
         int cont = 0;
         while (isInside) {
             int X = this.rand.nextInt(this.cellsPerSide);
             int Y = this.rand.nextInt(this.cellsPerSide);
+
+            Bug bug = new Bug(X, Y);
+            this.population.add(bug);
+
             if (cells[X][Y].bugFits(bug)) {
                 cells[X][Y].addBug(bug);
-                isInside = true;
+                isInside = false;
             }
             cont++;
             if (cont > numberOfCells) {
@@ -132,14 +146,17 @@ public class World {
                     break;
 
             }
-            List<Bug> bugsSeen = this.bugsSeen(x, y, newx, newy, vision);
+            List<Bug> bugsSeen = this.bugsSeen(x - newx, y - newy, vision);
 
-            bug.getMovementDecision(bugsSeen);
+            boolean decision = bug.getMovementDecision(bugsSeen);
+
+            cell.removeBug(bug);
+            cells[newx][newy].addBug(bug);
 
         }
     }
 
-    private List<Bug> bugsSeen(int x, int y, int newx, int newy, double vision) {
+    private List<Bug> bugsSeen(int newx, int newy, double vision) {
         return null;
     }
 }
