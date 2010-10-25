@@ -38,9 +38,12 @@ public class World {
         this.numberOfCells = cellsPerSide * cellsPerSide;
 
         this.rand = new Random();
-        cells = new Cell[cellsPerSide][];
+        cells = new Cell[cellsPerSide][cellsPerSide];
         for (int i = 0; i < cellsPerSide; i++) {
             cells[i] = new Cell[cellsPerSide];
+             for (int j = 0; j< cells[i].length; j++) {
+                 cells[i][j] = new Cell();
+             }
         }
         for (int i = 0; i < numberOfBugs; i++) {
             Bug bug = new Bug();
@@ -75,8 +78,8 @@ public class World {
     }
 
     private void move() {
-        for (int x = 0; x < cells.length; x++) {
-            for (int y = 0; y < cells[x].length; y++) {
+        for (int y = 0; y < cells.length; y++) {
+            for (int x = 0; x < cells[y].length; x++) {
                 this.selectNewCell(cells[x][y], x, y);
             }
         }
@@ -86,17 +89,57 @@ public class World {
         List<Bug> bugs = cell.getBugs();
 
         for (Bug bug : bugs) {
+            double velocity = bug.getVelocity();
+            if (velocity == 0) {
+                return;
+            }
             double vision = bug.getVision();
-       //     List<Bug> bugsSeen = this.bugsSeen(x, y, newx, newy,  vision);
-       //     double velocity = bug.getVelocity();
-            
-           // bug.getMovementDecision(bugsSeen);
+            int direction = rand.nextInt(4);
+            int newx = 0, newy = 0;
+
+            switch (direction) {
+                case 0:
+                    if (x + (int) vision < this.cellsPerSide) {
+                        newx = x + (int) vision;
+                    } else {
+                        newx = this.cellsPerSide;
+                    }
+                    newy = y;
+                    break;
+                case 1:
+                    if (x > vision) {
+                        newx = x - (int) vision;
+                    } else {
+                        newx = 0;
+                    }
+                    newy = y;
+                    break;
+                case 2:
+                    if (y + (int) vision < this.cellsPerSide) {
+                        newy = y + (int) vision;
+                    } else {
+                        newy = this.cellsPerSide;
+                    }
+                    newx = x;
+                    break;
+                case 3:
+                    if (y > vision) {
+                        newy = y - (int) vision;
+                    } else {
+                        newy = 0;
+                    }
+                    newx = x;
+                    break;
+
+            }
+            List<Bug> bugsSeen = this.bugsSeen(x, y, newx, newy, vision);
+
+            bug.getMovementDecision(bugsSeen);
 
         }
     }
 
-
-   /* private List<Bug> bugsSeen(int x, int y, int newx, newy, double vision){
-
-    }*/
+    private List<Bug> bugsSeen(int x, int y, int newx, int newy, double vision) {
+        return null;
+    }
 }

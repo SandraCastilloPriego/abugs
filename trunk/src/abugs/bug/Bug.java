@@ -17,6 +17,7 @@
 package abugs.bug;
 
 import abugs.bug.brain.Brain;
+import java.util.List;
 
 /**
  *
@@ -45,5 +46,9 @@ public class Bug {
 
     public double getVelocity() {
         return this.chromosome.getGenValue(BodyGenes.VELOCITY.name()).getValue();
+    }
+
+    public void getMovementDecision(List<Bug> bugsSeen) {
+
     }
 }

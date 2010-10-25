@@ -31,9 +31,12 @@ import abugs.world.World;
  */
 public class GraphicsWorld extends javax.swing.JFrame {
 
+    World world;
     /** Creates new form GraphicsWorld */
     public GraphicsWorld(World world) {
+        this.world = world;
         initComponents();
+
     }
 
     /** This method is called from within the constructor to
@@ -60,6 +63,11 @@ public class GraphicsWorld extends javax.swing.JFrame {
         jSplitPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,7 +82,7 @@ public class GraphicsWorld extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(490, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -96,6 +104,10 @@ public class GraphicsWorld extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.world.cicle();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
