@@ -26,6 +26,7 @@ import java.util.List;
  */
 public class Cell {
 
+
     double totalSpace;
     List<Bug> bugsInside;
 
